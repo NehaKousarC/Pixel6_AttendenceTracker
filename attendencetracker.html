@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Attendance Tracker</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <nav>
+    <h1>Attendance Tracker</h1>
+    <button id="addStudentBtn">Add Student</button>
+  </nav>
+
+  <div class="controls">
+    <select id="selectDate">
+      <option value="">Select Date</option>
+    </select>
+    <select id="selectMonth">
+      <option value="">Select Month</option>
+      <option value="Jan">Jan</option>
+      <option value="Feb">Feb</option>
+      <option value="Mar">Mar</option>
+      <option value="Apr">Apr</option>
+      <option value="May">May</option>
+      <option value="Jun">Jun</option>
+      <option value="Jul">Jul</option>
+      <option value="Aug">Aug</option>
+      <option value="Sep">Sep</option>
+      <option value="Oct">Oct</option>
+      <option value="Nov">Nov</option>
+      <option value="Dec">Dec</option>
+    </select>
+    <button id="saveBtn">Save</button>
+    <button id="resetBtn">Reset</button>
+    <a href="statistic.html">
+      <button id="checkBtn">Check</button>
+    </a>
+    
+  </div>
+
+  <div id="studentFormContainer" class="hidden">
+    <h2>Add New Student</h2>
+    <form id="studentForm">
+      <input type="text" id="studentName" placeholder="Student Name" required />
+      <input type="text" id="studentUSN" placeholder="Student USN" required />
+      <input type="text" id="studentDept" placeholder="Student Department" required />
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <section id="studentList">
+    <h2>Mark Attendance</h2>
+    <ul id="nameList"></ul>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>

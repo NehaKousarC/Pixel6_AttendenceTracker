@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Statistics</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <nav>
+    <h1>Attendance Statistics</h1>
+  </nav>
+
+  <section style="margin: 2rem;">
+    <table border="1" cellpadding="10" cellspacing="0">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>USN</th>
+          <th>Department</th>
+          <th>Present</th>
+          <th>Absent</th>
+          <th>Late</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody id="statsBody"></tbody>
+    </table>
+  </section>
+
+  <script>
+    const students = JSON.parse(localStorage.getItem('students')) || [];
+    const statsBody = document.getElementById('statsBody');
+
+    students.forEach(student => {
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td>${student.name}</td>
+        <td>${student.usn}</td>
+        <td>${student.dept}</td>
+        <td>${student.present}</td>
+        <td>${student.absent}</td>
+        <td>${student.late}</td>
+        <td>${student.total}</td>
+      `;
+      statsBody.appendChild(row);
+    });
+  </script>
+</body>
+</html>
