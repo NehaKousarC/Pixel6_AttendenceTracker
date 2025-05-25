@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: url('Class.jpeg') no-repeat center center fixed;
+      background-size: cover;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .wrapper {
+      display: flex;
+      width: 90%;
+      max-width: 1000px;
+      height: 600px;
+      box-shadow: 20px 10px 20px rgba(0, 0, 0, 0.623);
+      border-radius: 10px;
+      overflow: hidden;
+      background-color: rgba(255, 255, 255, 0.95);
+    }
+
+    .image-section {
+      flex: 1;
+      background: url('Classroom.jpeg') no-repeat center center/cover;
+    }
+
+    .container {
+      flex: 1;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: url('Room.jpeg') no-repeat center center/cover;
+      background-size: cover;
+      position: relative;
+    }
+
+    .container::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(255, 255, 255, 0.85);
+      z-index: 0;
+    }
+
+    .container h2,
+    .role-switch,
+    #loginForm,
+    #studentView {
+      position: relative;
+      z-index: 1;
+    }
+
+    .container h2 {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .role-switch {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .role-switch button {
+      padding: 0.5rem 1rem;
+      border: none;
+      background-color: #4CAF50;
+      color: white;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    .form-group {
+      margin-bottom: 1rem;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    #loginBtn {
+      width: 100%;
+      padding: 0.5rem;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #studentView {
+      display: none;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+<div class="wrapper">
+  <div class="image-section"></div>
+
+  <div class="container">
+    <h2 id="formTitle" span style="font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Login as Teacher</h2>
+
+    <div class="role-switch">
+      <button onclick="switchRole('teacher')" span style="font-family: 'Courier New', Courier, monospace;">Teacher</button>
+      <button onclick="switchRole('student')" span style="font-family: 'Courier New', Courier, monospace;">Student</button>
+    </div>
+
+    <form id="loginForm">
+      <div class="form-group">
+        <input type="text" id="username" style="font-family: Georgia, 'Times New Roman', Times, serif;" placeholder="Username" required>
+      </div>
+      <div class="form-group">
+        <input type="password" id="password" style="font-family: Georgia, 'Times New Roman', Times, serif;" placeholder="Password" required>
+      </div>
+      <button type="submit" id="loginBtn" span style="font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Login</button>
+    </form>
+
+    <div id="studentView">
+      <p span style="font-family:'Times New Roman', Times, serif ;">Welcome, Student! You can now view the attendance.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  let role = 'teacher';
+
+  function switchRole(selectedRole) {
+    role = selectedRole;
+    const formTitle = document.getElementById('formTitle');
+    const loginForm = document.getElementById('loginForm');
+    const studentView = document.getElementById('studentView');
+
+    if (role === 'teacher') {
+      formTitle.textContent = 'Login as Teacher';
+      loginForm.style.display = 'block';
+      studentView.style.display = 'none';
+    } else {
+      formTitle.textContent = 'Student View';
+      loginForm.style.display = 'none';
+      studentView.style.display = 'block';
+    }
+  }
+
+  document.getElementById('loginForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+
+    // Dummy login credentials
+    if (username === 'teacher' && password === '1234') {
+      alert('Teacher login successful!');
+    } else {
+      alert('Invalid credentials!');
+    }
+  });
+</script>
+
+</body>
+</html>
