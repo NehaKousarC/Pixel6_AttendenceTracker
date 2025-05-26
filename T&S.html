@@ -99,7 +99,7 @@
       border-radius: 5px;
     }
 
-    #loginBtn {
+    #loginBtn, #viewbtn {
       width: 100%;
       padding: 0.5rem;
       background-color: #007BFF;
@@ -139,7 +139,9 @@
     </form>
 
     <div id="studentView">
-      <p span style="font-family:'Times New Roman', Times, serif ;">Welcome, Student! You can now view the attendance.</p>
+      <p span style="font-family:'Times New Roman', Times, serif ;">Welcome, Student! You can now view the attendance.</p >
+        <p><br></p>
+    <button id="viewbtn" onclick="window.location.href='statistic.html'">View</button>
     </div>
   </div>
 </div>
@@ -171,7 +173,8 @@
 
     // Dummy login credentials
     if (username === 'teacher' && password === '1234') {
-      alert('Teacher login successful!');
+      // alert('Teacher login successful!');
+      window.location.href = "attendencetracker.html";
     } else {
       alert('Invalid credentials!');
     }
