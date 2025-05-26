@@ -55,22 +55,41 @@ function renderStudent(student) {
   li.innerHTML = `
     <span>${student.name}</span>
     <div class="attendance-buttons">
-      <button onclick="mark('${student.name}', 'present')">P</button>
-      <button onclick="mark('${student.name}', 'absent')">A</button>
-      <button onclick="mark('${student.name}', 'late')">L</button>
+      <button onclick="mark('${student.name}', 'present', this)">P</button>
+      <button onclick="mark('${student.name}', 'absent', this)">A</button>
+      <button onclick="mark('${student.name}', 'late', this)">L</button>
     </div>
   `;
   nameList.appendChild(li);
 }
 
-// Mark attendance
-window.mark = function(name, status) {
+// Mark attendance and color buttons
+window.mark = function(name, status, button) {
   students = students.map(student => {
     if (student.name === name) {
       student.todayStatus = status;
     }
     return student;
   });
+
+  // Reset all buttons in the same row
+  const parent = button.parentElement;
+  Array.from(parent.children).forEach(btn => {
+    btn.style.backgroundColor = '';
+    btn.style.color = '';
+  });
+
+  // Apply color based on status
+  if (status === 'present') {
+    button.style.backgroundColor = 'green';
+    button.style.color = 'white';
+  } else if (status === 'absent') {
+    button.style.backgroundColor = 'red';
+    button.style.color = 'white';
+  } else if (status === 'late') {
+    button.style.backgroundColor = 'orange';
+    button.style.color = 'white';
+  }
 };
 
 // Save attendance
